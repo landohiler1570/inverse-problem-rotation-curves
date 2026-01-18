@@ -1,0 +1,300 @@
+﻿The Interface–Boundary Framework
+Inference Limits in Inverse Physical Problems
+
+Domain: Inverse Problems in Physics
+
+Compiled by: Lando Hiler
+January 2026
+
+
+Table of Contents
+Executive Summary
+Part I: Theoretical Framework
+    1. Scope and Motivation
+    2. Core Results
+    3. Practical Implications
+    4. Formal Mathematical Construction
+Part II: Applied Demonstrations
+    5. Galaxy Rotation Curve Analysis
+    6. Inverse Problem Structure
+    7. Numerical Results
+    8. Visualization Framework
+Appendices
+
+
+Executive Summary
+Purpose: To explicitly identify which physical quantities are constrained by observational data and which remain underdetermined due to non-invertible measurement mappings.
+
+Many physical inferences rely on projecting high-dimensional physical systems onto lower-dimensional observational data (e.g., rotation curves, lensing, redshift measurements). This framework formalizes the limits imposed by such projections and provides a method to determine when additional modeling assumptions no longer produce new information.
+The intent is not to propose new physical theories, but to clarify the inference boundaries that exist within standard observational pipelines.
+Key Principle: Severe reduction of admissible parameter space (including cases with extremely rare surviving models) does not imply unique reconstruction of underlying physical geometry. This is standard inverse-problem structure, not a limitation of method—it is a mathematical consequence of projection operators having non-trivial null spaces.
+
+
+Part I: Theoretical Framework
+1. Scope and Motivation
+Physical measurements often involve non-invertible mappings from high-dimensional system states to lower-dimensional observational data. Common examples include:
+• • Rotation curves: Circular velocity v(r) derived from Doppler shifts
+• • Gravitational lensing: Deflection angles from integrated mass along line of sight
+• • Redshift measurements: Spectral shifts from complex cosmological and kinematic factors
+These observational "interfaces" impose fundamental constraints on inference. When a measurement operator is non-invertible, multiple distinct physical configurations can produce identical observational data. This framework provides rigorous criteria for:
+1. 1. Identifying which physical quantities are uniquely constrained by data
+2. 2. Recognizing when additional modeling cannot extract further information
+3. 3. Separating data-constrained results from assumption-dependent interpretations
+2. Core Results
+2.1 Non-Invertibility of Common Interfaces
+Several standard observational channels map physical states to data in a non-invertible way, resulting in persistent degeneracies even under strong fitting constraints. The framework demonstrates that:
+• Rotation curve interface: Maps 3D mass distributions ρ(x) to 1D circular velocity profiles v(r), with infinite-dimensional kernel (null space)
+• Lensing interface: Projects mass distributions onto line-of-sight integrated quantities, leaving transverse structure underdetermined
+• Combined constraints: Multiple independent data sources reduce but do not eliminate the kernel
+2.2 Effective Quantity Identification
+The framework distinguishes between:
+Directly constrained quantities: Effective enclosed mass M_eff(r), which is uniquely determined by rotation curves under spherical symmetry assumptions
+Underdetermined quantities: Underlying geometric structures (disk thickness, triaxiality, asymmetries), which remain in the null space of the measurement operator
+2.3 Parameter Volume Collapse Without Identifiability
+A critical insight demonstrated through numerical analysis:
+Severe parameter space reduction (survival rates as low as 1 in 200,000) does not guarantee geometric identifiability. A single surviving model from one parameterization class (e.g., spherical with specific multipole structure) represents only one element of an equivalence class under the measurement operator.
+This result clarifies that:
+• • χ² minimization constrains effective quantities
+• • Geometric reconstruction requires additional assumptions beyond data fitting
+• • Rarity of survivors indicates constraint strength within a model class, not uniqueness across model classes
+2.4 Cross-Constraint Reduction
+Combining independent observational channels (rotation curves + gravitational lensing) reduces the space of admissible models by imposing additional constraints. However, fundamental non-uniqueness persists because:
+4. 1. Each interface has its own null space
+5. 2. The intersection of null spaces is typically non-empty
+6. 3. No finite set of projected measurements can fully determine the original high-dimensional distribution
+3. Practical Implications
+3.1 Inference Limits
+The framework provides a clear criterion: when the parameter space has been reduced to elements that lie entirely within the measurement kernel, further modeling cannot extract additional physical information from the given dataset.
+3.2 Resource Efficiency
+By identifying structurally underdetermined quantities, researchers can avoid unnecessary computational or experimental effort aimed at resolving features that cannot be uniquely inferred from available observables.
+3.3 Model Discipline
+The framework encourages explicit separation between:
+• • Results directly supported by data
+• • Interpretations that depend on additional modeling assumptions
+• • Visualizations that serve as fiducial representations rather than unique reconstructions
+
+
+4. Formal Mathematical Construction
+Note: This section presents an interface-boundary model as a mathematical formalism. It is not a proposal of new physics, but rather a demonstration of architectural consistency for treating spacetime and the Standard Model as a boundary-conditioned system.
+4.1 Statement of Assumptions
+The construction adopts the following constraints:
+• A1. The physical content is exhausted by General Relativity and the Standard Model. No additional fields, particles, dimensions, or gauge groups are introduced.
+• A2. Spacetime is treated as a geometric interface with metric g_μν and associated spin connection ω^ab_μ.
+• A3. All Standard Model fields Ψ = {ψ_i, A^a_μ, φ} (fermions, gauge bosons, Higgs) are defined on this interface.
+• A4. Observables are accessed via electromagnetic interactions. Direct measurement of spacetime microstructure is not assumed.
+• A5. We introduce only: boundary conditions B, constraint functionals C[·], and Lagrange multiplier fields λ (having no independent dynamics).
+• A6. Fundamental constants {G, c, ℏ, α, θ_QCD, δ_CP, m_i, g_i} are fixed boundary data, not derived.
+4.2 Interface Variables
+Define the interface configuration space:
+    Q_int = {g_μν, Ψ} on manifold M
+Standard dynamics follow from the action:
+    S_std[g, Ψ] = ∫_M [(1/16πG) R √(-g) + L_SM[Ψ, g]] d⁴x
+This is the unconditioned interface: standard GR + SM with no boundary structure.
+4.3 Boundary-Conditioned Formulation
+We introduce a conditioning functional that encodes constraints transmitted from the inaccessible layer to the interface:
+    S_eff[g, Ψ, λ] = S_std[g, Ψ] + S_boundary[g, Ψ, λ]
+where the boundary term takes the form:
+    S_boundary = ∫_∂M B[g, Ψ, λ] d³σ + ∫_M λ^I C_I[g, Ψ] √(-g) d⁴x
+
+Boundary term structure:
+Surface term ∫_∂M B: Fixes asymptotic data (e.g., ADM charges, winding numbers), encodes topological boundary conditions, and sets initial/final state constraints (e.g., CP-violating phases at cosmological boundaries)
+Constraint term λ^I C_I: Where λ^I are non-dynamical Lagrange multipliers and C_I[g, Ψ] are constraint functionals enforcing relationships between geometry and matter
+Specific Constraint Examples:
+Irreversibility constraint:
+    C_arrow = Θ(∇_μ s^μ) · f[g, Ψ]
+where s^μ is entropy current and Θ is a Heaviside-like functional enforcing ∇_μ s^μ ≥ 0
+Chiral symmetry violation:
+    C_chiral = ε^μνρσ Tr(F_μν F_ρσ) - θ_boundary
+CP violation:
+    C_CP = J_CP[Ψ] - J_boundary
+where J_CP is the Jarlskog invariant and J_boundary is fixed boundary data.
+4.4 Recovery of Standard Physics
+Proposition: When boundary conditions are removed (S_boundary → 0), the formalism reduces exactly to unconditioned GR + SM.
+Proof: Set B → 0 and C_I → 0. The equations of motion become:
+    G_μν = 8πG T^SM_μν
+    E_Ψ[Ψ] = 0
+These are precisely Einstein's equations and Standard Model field equations. ∎
+Implication: The conditioning structure is mathematically removable. Standard physics exists as the limit case where boundary data becomes trivial.
+4.5 Interpretation
+What this model claims:
+7. 1. Interface formalism: Spacetime + SM can be consistently formulated as boundary-conditioned dynamics
+8. 2. Symmetry breaking as boundary data: Features like CP violation, chiral asymmetry, and thermodynamic irreversibility can be encoded as constraints rather than dynamical content
+9. 3. Black-box representation: The conditioning functional S_boundary represents information flow from an inaccessible layer without specifying its nature
+10. 4. Geometric resistance: Certain Standard Model features (weak interactions, flavor structure) resist geometric unification because they enter as constraint data rather than dynamical geometry
+
+What this model does NOT claim:
+11. 1. No new physics: No predictions beyond GR + SM. The model is a reformulation, not an extension
+12. 2. No ontological content: We do not specify what the "inaccessible layer" is
+13. 3. No derivation of constants: Values like α, δ_CP, θ_QCD appear as fixed boundary data. Their numerical values are not explained
+14. 4. No mechanism: We do not explain how the boundary conditions are enforced, only that they are consistent with observation
+4.6 Observational Equivalence
+At the interface level, all measurements yield identical results to standard theory:
+    ⟨O⟩_conditioned = ⟨O⟩_standard
+for any observable O constructed from electromagnetic interactions.
+Reason: The conditioning structure affects only how we organize the theory, not what we predict.
+4.7 Failure Modes and Limitations
+Where the model stops:
+• • Cannot derive fundamental constants from first principles
+• • Cannot predict new particles or forces
+• • Cannot explain the mechanism of boundary constraint enforcement
+• • Cannot access the "inaccessible layer" directly
+• • Provides no computational advantage for practical calculations
+Epistemic status: This construction is a mathematical reformulation demonstrating consistency, not a physical theory making falsifiable predictions.
+
+
+Part II: Applied Demonstrations
+This section demonstrates the interface-boundary framework through concrete analysis of galaxy rotation curves and gravitational lensing. The numerical examples illustrate how severe parameter space reduction can occur without resolving fundamental geometric ambiguities.
+5. Galaxy Rotation Curve Analysis
+5.1 The Rotation Curve Interface
+Galaxy rotation curves provide a paradigmatic example of a non-invertible measurement interface. The circular velocity v(r) is derived from Doppler measurements of emission lines and maps to effective enclosed mass through:
+    M_eff(r) = v²(r) · r / G
+This relationship holds under the assumption of circular orbits in a spherically symmetric potential. However:
+• • The 3D mass distribution ρ(x,y,z) has infinite degrees of freedom
+• • The rotation curve v(r) provides only a 1D constraint
+• • The null space of this projection is infinite-dimensional
+5.2 Parameterization Strategy
+To explore the parameter space systematically, we employ synthetic multipole expansions:
+    v_model(r) = v₀ · [baseline(r) + Σ_ℓ A_ℓ · P_ℓ(r/r_scale)]
+where:
+• • v₀ is a velocity normalization
+• • baseline(r) captures the monotonic profile shape
+• • A_ℓ are multipole amplitudes
+• • P_ℓ are basis functions (e.g., Legendre polynomials)
+This parameterization allows exploration of models with varying degrees of structure while maintaining physical plausibility through appropriate constraints.
+5.3 Numerical Audit Methodology
+The framework employs Monte Carlo sampling to audit the parameter space:
+15. 1. Generate N random parameter vectors from predefined ranges
+16. 2. Compute v_model(r) for each parameter set
+17. 3. Calculate χ² against observational data
+18. 4. Apply survival criterion (e.g., Δχ² < threshold)
+19. 5. For survivors, apply additional constraints (lensing, physical plausibility)
+This systematic approach reveals:
+• • How parameter space volume collapses under constraints
+• • Whether surviving models represent unique geometries or equivalence classes
+• • The relationship between fitting quality and geometric identifiability
+6. Inverse Problem Structure
+6.1 The Measurement Kernel
+The rotation curve interface acts as a linear projection operator:
+    P: ρ(x,y,z) → v(r)
+The kernel (null space) of P consists of all mass distributions that produce identical rotation curves:
+    ker(P) = {δρ(x,y,z) : P[ρ + δρ] = P[ρ]}
+This null space is infinite-dimensional because:
+• • Azimuthal variations at fixed radius contribute identically to v(r)
+• • Vertical structure in disk systems remains unconstrained
+• • Non-spherical mass distributions can produce spherical effective potentials
+6.2 Combined Constraints
+Adding gravitational lensing provides an independent projection:
+    L: ρ(x,y,z) → deflection angles
+The combined system (P, L) has a reduced but still non-trivial kernel:
+    ker(P, L) = ker(P) ∩ ker(L)
+Key insight: Even when both constraints are satisfied with high precision, geometric degeneracies persist. A single surviving model represents one element of an equivalence class under (P, L).
+6.3 Spherical Embedding Ambiguity
+When visualizing surviving models, a common approach is to construct a spherical density profile:
+    ρ_eff(r) = (1/4πr²) · dM_eff/dr
+Critical caveat: This spherical embedding is a visualization convenience, not a unique reconstruction. The true 3D distribution could be:
+• • A thin disk with scale height h << r
+• • A triaxial ellipsoid with axis ratios (a:b:c)
+• • An asymmetric structure with m-fold symmetries
+All of these can produce the same effective M_eff(r) and thus the same v(r).
+7. Numerical Results and Parameter Space Reduction
+7.1 Example Case: syn_multipole_l2 Audit
+Configuration:
+• • Sample size: N = 200,000 parameter vectors
+• • Parameter space: 8-dimensional (v₀, baseline parameters, multipole amplitudes)
+• • Survival criterion: Δχ² < 10 relative to best fit
+• • Additional gate: Lensing deflection consistency
+
+Results:
+• • Survivors after χ² gate: 1 model
+• • Survival rate: 0.0005% (1 in 200,000)
+• • Lensing gate: Survivor passes
+7.2 Interpretation of Extreme Rarity
+The survival of only 1 model in 200,000 trials indicates:
+
+1. Strong constraint within parameterization class:
+The χ² surface is sharply peaked, and most random parameters fail to reproduce the data quality
+
+2. NOT geometric uniqueness:
+The survivor represents one element of an equivalence class. Alternative parameterizations (different multipole expansions, disk models, triaxial configurations) remain viable
+
+3. Interface boundary clarity:
+The effective enclosed mass M_eff(r) is tightly constrained, while the underlying 3D geometry remains in the measurement kernel
+7.3 Cross-Validation Through Lensing
+The lensing gate provides independent validation:
+• • It confirms that the survivor produces gravitationally plausible deflection
+• • It reduces parameter space further by eliminating unphysical mass distributions
+• • However, it does not resolve the geometric degeneracy—multiple 3D configurations can pass both gates
+Epistemic conclusion: The inverse problem remains severely underdetermined. The single survivor reflects passage through tight interface constraints but does not constitute a unique reconstruction of galaxy geometry.
+8. Visualization Framework
+8.1 Spherical Effective Density Embedding
+For visualization purposes, we construct a representative spherical embedding:
+    ρ_eff(r) = (1/4πGr²) · d/dr[v²_model(r) · r]
+This provides a single fiducial 3D density field consistent with the survivor's effective enclosed mass M_eff(r).
+8.2 Epistemic Status of Visualizations
+Important clarifications:
+• • Not a unique reconstruction: The spherical embedding is one of infinitely many distributions producing the same M_eff(r)
+• • Representational prior: Spherical symmetry is imposed for convenience, not inferred from data
+• • Equivalence class: Non-spherical degrees of freedom remain in the null space
+• • Fiducial status: Suitable for illustrating gravitational forcing, not for claiming geometric truth
+8.3 Alternative Embeddings
+The same rotation curve survivor could equally be embedded as:
+• • Disk geometry: ρ(R,z) with scale height h(R)
+• • Triaxial ellipsoid: ρ(R,θ,φ) with axis ratios (a:b:c)
+• • Asymmetric structure: ρ(r,θ,φ) with non-axisymmetric features
+Each embedding satisfies the interface constraint M_eff(r) = constant, demonstrating the geometric ambiguity inherent to the inverse problem.
+
+
+Appendices
+Appendix A: Technical Specifications
+A.1 Rotation Curve Interface Transformation
+From circular velocity to effective mass:
+    M_eff(r) = v²(r) · r / G
+From effective mass to spherical density:
+    ρ_eff(r) = (1/4πr²) · dM_eff/dr = (1/4πGr²) · d/dr[v²(r) · r]
+A.2 Monte Carlo Sampling Protocol
+Parameter ranges:
+• • Velocity normalization: v₀ ∈ [50, 300] km/s
+• • Multipole amplitudes: A_ℓ ∈ [-0.3, 0.3] × v₀
+• • Scale radius: r_scale ∈ [0.5, 5.0] kpc
+Sampling method: Uniform random sampling with Latin hypercube stratification (optional)
+χ² calculation:
+    χ² = Σᵢ [(v_model(rᵢ) - v_obs(rᵢ))² / σ²ᵢ]
+A.3 Lensing Constraint Implementation
+For surviving rotation curve models, compute:
+    Deflection angle: α(θ) = (4G/c²) · ∫ M_eff(r) / r dr
+Apply consistency gate: require deflection angles consistent with observed lensing within measurement uncertainties.
+Appendix B: Philosophical and Methodological Notes
+B.1 Distinction Between Constraint and Identifiability
+The framework emphasizes a critical distinction:
+
+Constraint: Reduction of parameter space through data fitting (measured by survival rates, χ² improvements)
+
+Identifiability: Unique determination of underlying physical geometry (requires invertibility of measurement operator)
+These are not equivalent. Severe constraint can occur without identifiability when the measurement operator has a non-trivial null space.
+B.2 Role of Additional Assumptions
+Geometric reconstruction requires assumptions beyond data fitting:
+• • Symmetry priors: spherical, axisymmetric, disk-like
+• • Smoothness constraints: regularity of ρ(x)
+• • Physical plausibility: non-negative density, finite total mass
+These assumptions should be stated explicitly and recognized as model choices rather than data-driven inferences.
+B.3 Computational Resource Allocation
+The framework suggests efficient resource allocation:
+• • High priority: Refining measurements of directly constrained quantities (v(r), M_eff(r))
+• • Medium priority: Adding independent observational channels to reduce null space
+• • Low priority: Extensive parameter searches within model classes known to lie in the kernel
+
+
+Conclusion
+The Interface-Boundary Framework provides a rigorous mathematical structure for understanding inference limits in observational physics. By explicitly identifying measurement kernels and distinguishing constraint from identifiability, it clarifies when additional modeling can extract information from data and when fundamental ambiguities persist.
+
+Key contributions:
+20. 1. Formalization of non-invertible measurement interfaces
+21. 2. Demonstration that parameter space collapse ≠ geometric uniqueness
+22. 3. Practical methodology for auditing inference limits
+23. 4. Clear separation between data-constrained and assumption-dependent results
+
+This framework represents an accounting of inference limits inherent to existing observational methods. It does not introduce new physics, modify existing laws, or claim unique reconstructions of physical systems.
+Its role is strictly to define the boundary between what is supported by data and what remains dependent on modeling assumptions.
+
+— Lando Hiler
+"I put this framework together so someone else wouldn't have to."
